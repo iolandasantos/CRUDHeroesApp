@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CRUDHeroesApp</string>
+    <string name="action_settings">Settings</string>
 </resources>
