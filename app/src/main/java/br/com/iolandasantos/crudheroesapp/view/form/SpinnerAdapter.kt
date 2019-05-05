@@ -14,8 +14,8 @@ class SpinnerAdapter internal constructor(internal var context: Context, interna
         return list.size
     }
 
-    override fun getItem(i: Int): Any? {
-        return null
+    override fun getItem(position: Int): Any? {
+        return list[position]
     }
 
     override fun getItemId(i: Int): Long {
@@ -27,12 +27,12 @@ class SpinnerAdapter internal constructor(internal var context: Context, interna
         if (view == null) {
             val inflater = LayoutInflater.from(context)
 
-            view = inflater.inflate(R.layout.item, viewGroup, false)
+            view = inflater.inflate(R.layout.spinner_studio_item, viewGroup, false)
         }
 
         val textView = view!!.findViewById<TextView>(R.id.textView)
 
-        textView.text = list[i]._id + " " + list[i].name
+        textView.text = list[i].name
 
         return textView
 

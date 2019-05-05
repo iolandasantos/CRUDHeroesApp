@@ -19,7 +19,7 @@
                 android:id="@+id/inputName">
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="Name"/>
+                      android:hint="@string/lbl_name"/>
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
@@ -27,7 +27,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spStudio"
                 android:spinnerMode="dropdown"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:autofillHints="@string/lbl_studio"
+        />
 
         <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                 android:id="@+id/inputPower">
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="Power"/>
+                      android:hint="@string/lbl_power"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -44,14 +46,14 @@
                 android:id="@+id/inputWeakness">
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="Weakness"/>
+                      android:hint="@string/lbl_weakness"/>
         </android.support.design.widget.TextInputLayout>
 
         
 
         <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar"
+                android:text="@string/lbl_salvar"
                 android:id="@+id/btSalvar"/>
     </LinearLayout>
 

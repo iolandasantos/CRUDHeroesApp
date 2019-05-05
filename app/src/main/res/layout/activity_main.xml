@@ -8,7 +8,7 @@
         tools:context=".view.main.MainActivity">
 
     <TextView
-            android:text="C.R.U.D Heroes"
+            android:text="@string/title_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvTitulo"
@@ -23,8 +23,8 @@
     />
 
     <ImageView
-            android:layout_width="280dp"
-            android:layout_height="280dp"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
             app:srcCompat="@drawable/studio"
             android:id="@+id/ivStudio"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +35,8 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
             app:layout_constraintHorizontal_bias="0.504"/>
     <ImageView
-            android:layout_width="280dp"
-            android:layout_height="280dp"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
             app:srcCompat="@drawable/hero"
             android:id="@+id/ivHero"
             app:layout_constraintEnd_toEndOf="parent"

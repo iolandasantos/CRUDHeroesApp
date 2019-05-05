@@ -10,16 +10,22 @@
               android:layout_height="wrap_content"
               android:textSize="20sp"
               android:textStyle="bold"
-              android:text="Name"
+              android:text="@string/lbl_name"
               android:id="@+id/tvName"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Power"
+              android:text="@string/lbl_studio"
+              android:id="@+id/tvStudio"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/lbl_power"
               android:id="@+id/tvPower"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Weakness"
+              android:text="@string/lbl_weakness"
               android:id="@+id/tvWeakness"/>
+
 </LinearLayout>

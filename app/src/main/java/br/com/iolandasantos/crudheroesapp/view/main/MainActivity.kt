@@ -13,8 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         ivStudio.setOnClickListener {
-            val nextScreenIntent = Intent(this,StudioActivity::class.java)
-            startActivity(nextScreenIntent)
+            startActivity(Intent(this,StudioActivity::class.java))
         }
 
         ivHero.setOnClickListener {

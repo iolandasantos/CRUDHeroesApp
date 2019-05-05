@@ -40,7 +40,7 @@ class StudioListAdapter(
             studio: Studio,
             clickLista: (Studio) -> Unit
         ) = with(itemView) {
-            tvName.text = studio._id + " - " + studio.name
+            tvName.text = studio.name
             tvHeadquarter.text = studio.headquarter
             tvWebsite.text = studio.website
 

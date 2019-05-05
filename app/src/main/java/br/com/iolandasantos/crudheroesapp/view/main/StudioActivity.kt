@@ -63,6 +63,12 @@ class StudioActivity : AppCompatActivity() {
             it!!
         ) {
             Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
+            val nextScreenIntent = Intent(this, FormStudio::class.java)
+            nextScreenIntent.putExtra("ID", it._id)
+            nextScreenIntent.putExtra("NAME", it.name)
+            nextScreenIntent.putExtra("HEADQUARTER", it.headquarter)
+            nextScreenIntent.putExtra("WEBSITE", it.website)
+            startActivityForResult(nextScreenIntent, 1)
         }
 
         rvStudios.layoutManager = LinearLayoutManager(this)
@@ -88,7 +94,7 @@ class StudioActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
+        // Handle action bar spinner_studio_item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {

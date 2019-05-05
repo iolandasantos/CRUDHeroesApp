@@ -16,17 +16,17 @@ import kotlinx.android.synthetic.main.hero_form.*
 import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.studio_form.btSalvar
 import kotlinx.android.synthetic.main.studio_form.inputName
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 
 class FormHero : AppCompatActivity() {
 
-    private lateinit var formHeroViewModel: FormHeroViewModel
-    var spinner: Spinner? = null
+    var studioSelecionado: Studio? = null
 
+    private lateinit var formHeroViewModel: FormHeroViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.hero_form)
-
-        spinner = findViewById(R.id.spStudio)
 
         populaSpinner()
 
@@ -36,7 +36,7 @@ class FormHero : AppCompatActivity() {
         btSalvar.setOnClickListener {
             formHeroViewModel.salvar(
                 inputName.editText?.text.toString(),
-                spStudio.getSelectedItem().toString(),
+                studioSelecionado?._id!!,
                 inputPower.editText?.text.toString(),
                 inputWeakness.editText?.text.toString()
             )
@@ -52,9 +52,25 @@ class FormHero : AppCompatActivity() {
             onComplete = {
                 val studios: List<Studio>? = it
 
-                var adapter: SpinnerAdapter = SpinnerAdapter(this@FormHero, studios!!);
+                val adapter = SpinnerAdapter(this@FormHero, studios!!)
 
-                spinner!!.adapter=adapter
+                spStudio.adapter=adapter
+
+                spStudio.onItemSelectedListener = object : OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parentView: AdapterView<*>,
+                        selectedItemView: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        studioSelecionado = adapter.getItem(position) as Studio
+                    }
+
+                    override fun onNothingSelected(parentView: AdapterView<*>) {
+                        // your code here
+                    }
+
+                }
             },
             onError = {
 

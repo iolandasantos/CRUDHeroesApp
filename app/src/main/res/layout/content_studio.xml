@@ -9,7 +9,7 @@
         tools:context=".view.main.HeroActivity">
 
     <TextView
-            android:text="Studio List"
+            android:text="@string/studio_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvTitulo"

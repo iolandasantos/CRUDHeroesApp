@@ -11,6 +11,8 @@ import br.com.iolandasantos.crudheroesapp.R
 import br.com.iolandasantos.crudheroesapp.model.ResponseStatus
 import kotlinx.android.synthetic.main.studio_form.*
 import kotlinx.android.synthetic.main.loading.*
+import kotlinx.android.synthetic.main.studio_form.btSalvar
+import kotlinx.android.synthetic.main.studio_form.inputName
 
 class FormStudio : AppCompatActivity() {
 
@@ -20,14 +22,40 @@ class FormStudio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.studio_form)
 
+        if(intent.extras !=  null) {
+            inputID.editText?.setText(intent.getStringExtra("ID"))
+            inputName.editText?.setText(intent.getStringExtra("NAME"))
+            inputHeadquarter.editText?.setText(intent.getStringExtra("HEADQUARTER"))
+            inputWebsite.editText?.setText(intent.getStringExtra("WEBSITE"))
+
+            btRemover.visibility = View.VISIBLE
+        }else{
+            btRemover.visibility = View.GONE
+        }
+
         formStudioViewModel = ViewModelProviders.of(this)
             .get(FormStudioViewModel::class.java)
 
         btSalvar.setOnClickListener {
-            formStudioViewModel.salvar(
-                inputName.editText?.text.toString(),
-                inputHeadquarter.editText?.text.toString(),
-                inputWebsite.editText?.text.toString()
+            if(inputID.editText?.text.toString() != ""){
+                formStudioViewModel.atualizar(
+                    inputID.editText?.text.toString(),
+                    inputName.editText?.text.toString(),
+                    inputHeadquarter.editText?.text.toString(),
+                    inputWebsite.editText?.text.toString()
+                )
+            }else {
+                formStudioViewModel.salvar(
+                    inputName.editText?.text.toString(),
+                    inputHeadquarter.editText?.text.toString(),
+                    inputWebsite.editText?.text.toString()
+                )
+            }
+        }
+
+        btRemover.setOnClickListener{
+            formStudioViewModel.apagar(
+                inputID.editText?.text.toString()
             )
         }
 

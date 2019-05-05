@@ -40,7 +40,8 @@ class HeroListAdapter(
             hero: Hero,
             clickLista: (Hero) -> Unit
         ) = with(itemView) {
-            tvName.text = hero._id + " - " + hero.name
+            tvName.text = hero.name
+            tvStudio.text = hero.studio
             tvPower.text = hero.power
             tvWeakness.text = hero.weakness
 
