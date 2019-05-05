@@ -23,14 +23,14 @@ class SpinnerAdapter internal constructor(internal var context: Context, interna
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
-        var view = view
-        if (view == null) {
+        var viewLocal = view
+        if (viewLocal == null) {
             val inflater = LayoutInflater.from(context)
 
-            view = inflater.inflate(R.layout.spinner_studio_item, viewGroup, false)
+            viewLocal = inflater.inflate(R.layout.spinner_studio_item, viewGroup, false)
         }
 
-        val textView = view!!.findViewById<TextView>(R.id.textView)
+        val textView = viewLocal!!.findViewById<TextView>(R.id.textView)
 
         textView.text = list[i].name
 
@@ -39,13 +39,11 @@ class SpinnerAdapter internal constructor(internal var context: Context, interna
     }
 
     fun getPositionByID(id: String): Int{
-        var position : Int = 0
-
-        for(position in 0 until list.size){
-            if(list[position]._id.toString().equals(id)) {
-                return position
+        for(positionByID in 0 until list.size){
+            if(list[positionByID]._id.toString() == id) {
+                return positionByID
             }
         }
-        return position
+        return 0
     }
 }

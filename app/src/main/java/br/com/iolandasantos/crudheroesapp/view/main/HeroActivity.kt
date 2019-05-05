@@ -32,9 +32,7 @@ class HeroActivity : AppCompatActivity() {
 
         heroViewModel.buscarTodos()
 
-        fab.setOnClickListener { view ->
-            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()*/
+        fab.setOnClickListener {
             startActivityForResult(
                 Intent(
                     this,

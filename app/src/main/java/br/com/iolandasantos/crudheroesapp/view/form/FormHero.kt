@@ -103,7 +103,7 @@ class FormHero : AppCompatActivity() {
 
                 }
 
-                if(id != "" && id != null){
+                if(id != ""){
                     spStudio.setSelection(adapter.getPositionByID(id))
                 }
             },
