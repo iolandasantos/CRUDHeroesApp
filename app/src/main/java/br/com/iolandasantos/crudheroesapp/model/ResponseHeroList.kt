@@ -1,7 +1,7 @@
 package br.com.iolandasantos.crudheroesapp.model
 
-data class ResponseHero (
+data class ResponseHeroList (
     val status: String,
     val message: String,
-    val data: Hero? = null
+    val data: List<Hero>? = null
 )

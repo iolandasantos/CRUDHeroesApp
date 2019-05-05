@@ -37,4 +37,15 @@ class SpinnerAdapter internal constructor(internal var context: Context, interna
         return textView
 
     }
+
+    fun getPositionByID(id: String): Int{
+        var position : Int = 0
+
+        for(position in 0 until list.size){
+            if(list[position]._id.toString().equals(id)) {
+                return position
+            }
+        }
+        return position
+    }
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.iolandasantos.crudheroesapp.R
 import br.com.iolandasantos.crudheroesapp.model.Hero
+import br.com.iolandasantos.crudheroesapp.repository.StudioRepository
 import kotlinx.android.synthetic.main.hero_item.view.*
 
 class HeroListAdapter(
@@ -42,6 +43,13 @@ class HeroListAdapter(
         ) = with(itemView) {
             tvName.text = hero.name
             tvStudio.text = hero.studio
+
+            val studioRepository = StudioRepository()
+
+            studioRepository.buscarStudio(hero.studio,onComplete = {
+                tvStudio.text = it?.name
+            }, onError = {})
+
             tvPower.text = hero.power
             tvWeakness.text = hero.weakness
 

@@ -58,4 +58,50 @@ class FormHeroViewModel : ViewModel() {
         )
     }
 
+    fun atualizar(
+        id: String,
+        name: String,
+        studio: String,
+        power: String,
+        weakness: String
+    ) {
+        isLoading.value = true
+        val hero = Hero(name = name, studio = studio, power = power, weakness = weakness, _id = id)
+        heroRepository.atualizar(id, hero,
+            onComplete = {
+                isLoading.value = false
+                responseStatus.value = ResponseStatus(
+                    true,
+                    "Dado gravado com sucesso"
+                )
+            }, onError = {
+                isLoading.value = false
+                responseStatus.value = ResponseStatus(
+                    false,
+                    it?.message!!
+                )
+            })
+
+    }
+
+    fun apagar(id: String){
+        isLoading.value = true
+
+        heroRepository.apagar(id,
+            onComplete = {
+                isLoading.value = false
+                responseStatus.value = ResponseStatus(
+                    true,
+                    "Dado removido com sucesso"
+                )
+            }, onError = {
+                isLoading.value = false
+                responseStatus.value = ResponseStatus(
+                    false,
+                    it?.message!!
+                )
+            })
+
+    }
+
 }

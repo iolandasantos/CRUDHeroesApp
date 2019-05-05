@@ -64,6 +64,13 @@ class HeroActivity : AppCompatActivity() {
             it!!
         ) {
             Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
+            val nextScreenIntent = Intent(this, FormHero::class.java)
+            nextScreenIntent.putExtra("ID", it._id)
+            nextScreenIntent.putExtra("NAME", it.name)
+            nextScreenIntent.putExtra("STUDIO", it.studio)
+            nextScreenIntent.putExtra("POWER", it.power)
+            nextScreenIntent.putExtra("WEAKNESS", it.weakness)
+            startActivityForResult(nextScreenIntent, 1)
         }
 
         rvHeroes.layoutManager = LinearLayoutManager(this)

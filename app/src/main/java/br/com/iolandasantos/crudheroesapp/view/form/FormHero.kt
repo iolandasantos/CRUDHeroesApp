@@ -28,23 +28,54 @@ class FormHero : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.hero_form)
 
-        populaSpinner()
+        if(intent.extras !=  null) {
+            inputID.editText?.setText(intent.getStringExtra("ID"))
+            inputName.editText?.setText(intent.getStringExtra("NAME"))
+            inputPower.editText?.setText(intent.getStringExtra("POWER"))
+            inputWeakness.editText?.setText(intent.getStringExtra("WEAKNESS"))
+
+            btRemover.visibility = View.VISIBLE
+
+            populaSpinner(intent.getStringExtra("STUDIO"))
+
+        }else{
+            btRemover.visibility = View.GONE
+            populaSpinner()
+
+        }
 
         formHeroViewModel = ViewModelProviders.of(this)
             .get(FormHeroViewModel::class.java)
 
         btSalvar.setOnClickListener {
-            formHeroViewModel.salvar(
-                inputName.editText?.text.toString(),
-                studioSelecionado?._id!!,
-                inputPower.editText?.text.toString(),
-                inputWeakness.editText?.text.toString()
+            if(inputID.editText?.text.toString() != "") {
+
+                formHeroViewModel.atualizar(
+                    inputID.editText?.text.toString(),
+                    inputName.editText?.text.toString(),
+                    studioSelecionado?._id!!,
+                    inputPower.editText?.text.toString(),
+                    inputWeakness.editText?.text.toString()
+                )
+            }else{
+                formHeroViewModel.salvar(
+                    inputName.editText?.text.toString(),
+                    studioSelecionado?._id!!,
+                    inputPower.editText?.text.toString(),
+                    inputWeakness.editText?.text.toString()
+                )
+            }
+        }
+
+        btRemover.setOnClickListener{
+            formHeroViewModel.apagar(
+                inputID.editText?.text.toString()
             )
         }
 
         registerObserver()
     }
-    private fun populaSpinner(){
+    private fun populaSpinner(id: String = ""){
 
         val studioRepository = StudioRepository()
 
@@ -70,6 +101,10 @@ class FormHero : AppCompatActivity() {
                         // your code here
                     }
 
+                }
+
+                if(id != "" && id != null){
+                    spStudio.setSelection(adapter.getPositionByID(id))
                 }
             },
             onError = {

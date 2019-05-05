@@ -18,8 +18,8 @@
 
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
             <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/icone"
+                    android:layout_height="@dimen/icone"
                     app:srcCompat="@drawable/studio"
                     android:id="@+id/ivStudio"/>
 
@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvStudio"
-                    android:textSize="36sp"
+                    android:textSize="@dimen/tituloSize"
                     android:layout_toEndOf="@id/ivStudio"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"

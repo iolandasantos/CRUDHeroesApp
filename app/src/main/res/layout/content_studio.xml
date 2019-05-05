@@ -8,27 +8,36 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".view.main.HeroActivity">
 
-    <TextView
-            android:text="@string/studio_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTitulo"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:visibility="visible"
-            android:textSize="48sp"
-            android:textAlignment="center"
-    />
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/headContainer">
+        <ImageView
+                android:layout_width="@dimen/icone"
+                android:layout_height="@dimen/icone"
+                app:srcCompat="@drawable/studio"
+                android:id="@+id/ivStudio"/>
+
+        <TextView
+                android:text="@string/studio_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTitulo"
+                android:visibility="visible"
+                android:textSize="@dimen/tituloSize"
+                android:textAlignment="center"
+                android:layout_toEndOf="@id/ivStudio"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true"
+        />
+    </RelativeLayout>
+
 
     <android.support.v7.widget.RecyclerView
-            android:layout_below="@+id/tvTitulo"
+            android:layout_below="@+id/headContainer"
             android:id="@+id/rvStudios"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"/>
 
     <include layout="@layout/loading"/>
 
